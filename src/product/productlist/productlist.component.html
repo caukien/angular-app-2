@@ -1,0 +1,59 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Product List</h4>
+    <button type="button" class="btn btn-success" (click)="openForm()">
+      + Add New Product
+    </button>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Sold</th>
+            <th>Stock</th>
+            <th>Exp Date</th>
+            <th>Category ID</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <div *ngIf="items.length === 0; else showItems" class="text-center">
+          No Data
+        </div>
+        <tbody>
+          <ng-template #showItems>
+            <tr *ngFor="let item of items">
+              <td>{{ item.productName }}</td>
+              <td>{{ item.sold }}</td>
+              <td>{{ item.stock }}</td>
+              <td>{{ item.exp | date }}</td>
+              <td>{{ item.cateId }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-outline-success"
+                  (click)="chooseItem(item, 'edit')"
+                >
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-danger"
+                  (click)="chooseItem(item, 'delete')"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-product-form
+  [isOpen]="isFormOpen"
+  [itemForEdit]="productToEdit"
+  (formClosed)="onFormClosed()"
+  (productAdded)="isProductAdded()"
+/>

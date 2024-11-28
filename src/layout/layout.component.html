@@ -1,0 +1,19 @@
+<app-top-nav />
+<div class="container-fluid page-body-wrapper">
+  <!-- partial:partials/_settings-panel.html -->
+
+  <!-- partial -->
+  <!-- partial:partials/_sidebar.html -->
+  <app-right-bar (menuItemSelected)="onMenuItemSelected($event)" />
+  <!-- partial -->
+  <div class="main-panel">
+    <!-- content-wrapper ends -->
+    <div class="content-wrapper">
+      <app-product *ngIf="activeItem === 'product'" />
+      <app-category *ngIf="activeItem === 'category'" />
+    </div>
+    <app-footer />
+    <!-- partial -->
+  </div>
+  <!-- main-panel ends -->
+</div>

@@ -1,0 +1,85 @@
+<div class="modal" tabindex="-1" role="dialog" *ngIf="isOpen">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Product</h5>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="close()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="productName"
+              name="productName"
+              [(ngModel)]="product.productName"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="sold">Sold</label>
+            <input
+              type="number"
+              class="form-control form-control-lg"
+              id="sold"
+              name="sold"
+              [(ngModel)]="product.sold"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="stock">Stock</label>
+            <input
+              type="number"
+              class="form-control form-control-lg"
+              id="stock"
+              name="stock"
+              [(ngModel)]="product.stock"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="expDate">Expiration Date</label>
+            <input
+              type="date"
+              class="form-control form-control-lg"
+              id="expDate"
+              name="expDate"
+              [(ngModel)]="product.exp"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="cateId">Category</label>
+            <select
+              id="cateId"
+              class="form-control"
+              [(ngModel)]="product.cateId"
+              name="cateId"
+              required
+            >
+              <option *ngFor="let category of cateItems" [value]="category.id">
+                {{ category.CateName }}
+              </option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-info" (click)="addProduct()">
+            {{ mode === "edit" ? "Save Changes" : "Add" }}
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="close()">
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
