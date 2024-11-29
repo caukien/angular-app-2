@@ -6,9 +6,17 @@ import { CategoryModule } from '../category/category.module';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { RightBarComponent } from './right-bar/right-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { AppRoutingModule } from '../app/app-routing.module';
+import { AccountModule } from '../account/account.module';
 
 @NgModule({
-  imports: [CommonModule, ProductModule, CategoryModule],
+  imports: [
+    CommonModule,
+    ProductModule,
+    CategoryModule,
+    AppRoutingModule,
+    AccountModule,
+  ],
   declarations: [
     LayoutComponent,
     TopNavComponent,

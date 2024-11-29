@@ -2,11 +2,12 @@
   <app-layout />
 </div> -->
 
-<div *ngIf="!isLoggedIn; else layout">
+<router-outlet></router-outlet>
+<!-- <div *ngIf="!isLoggedIn; else layout">
   <app-login-form (loginSuccess)="onLoginSuccess()"></app-login-form>
 </div>
 <ng-template #layout>
   <div class="container-scroller">
     <app-layout></app-layout>
   </div>
-</ng-template>
+</ng-template> -->

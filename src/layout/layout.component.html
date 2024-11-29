@@ -11,9 +11,11 @@
     <div class="content-wrapper">
       <app-product *ngIf="activeItem === 'product'" />
       <app-category *ngIf="activeItem === 'category'" />
+      <app-account *ngIf="activeItem === 'account'" />
     </div>
     <app-footer />
     <!-- partial -->
   </div>
   <!-- main-panel ends -->
 </div>
+<!-- <router-outlet></router-outlet> -->

@@ -1,29 +1,35 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'any'
-})
+@Injectable()
 export class AuthService {
-  private isAuthenticated = false;
+  private BaseEndpoint: string =
+    'http://test.nghiencuukhoahoc.com.vn/api/app/account/login';
 
-  user: User[] = [new User('admin', '12345')]
+  user: User = new User('', '');
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): boolean {
-    if (username === 'admin' && password === '12345') {
-      this.isAuthenticated = true;
-      return true;
-    }
-    return false;
+  onlogin(loginObj: User): Observable<any> {
+    const body = new HttpParams()
+      .set('userName', loginObj.username)
+      .set('password', loginObj.password);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
+
+    return this.http.post(this.BaseEndpoint, body.toString(), {
+      headers,
+    });
   }
 
-  logout(): void {
-    this.isAuthenticated = false;
-  }
+  // logout(): void {
+  //   this.isAuthenticated = false;
+  // }
 
-  isLoggedIn(): boolean {
-    return this.isAuthenticated;
-  }
+  // isLoggedIn(): boolean {
+  //   return this.isAuthenticated;
+  // }
 }
