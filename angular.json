@@ -27,19 +27,34 @@
             "outputPath": "dist/app2",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/template/vendors/feather/feather.css",
+              "src/assets/template/vendors/mdi/css/materialdesignicons.min.css",
+              "src/assets/template/vendors/ti-icons/css/themify-icons.css",
+              "src/assets/template/vendors/typicons/typicons.css",
+              "src/assets/template/vendors/simple-line-icons/css/simple-line-icons.css",
+              "src/assets/template/vendors/css/vendor.bundle.base.css",
+              "src/assets/template/js/select.dataTables.min.css",
+              "src/assets/template/css/vertical-layout-light/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/template/vendors/js/vendor.bundle.base.js",
+              "src/assets/template/vendors/chart.js/Chart.min.js",
+              "src/assets/template/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js",
+              "src/assets/template/vendors/progressbar.js/progressbar.min.js",
+              "src/assets/template/js/off-canvas.js",
+              "src/assets/template/js/hoverable-collapse.js",
+              "src/assets/template/js/template.js",
+              "src/assets/template/js/settings.js",
+              "src/assets/template/js/todolist.js",
+              "src/assets/template/js/dashboard.js",
+              "src/assets/template/js/Chart.roundedBarCharts.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -86,19 +101,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         }

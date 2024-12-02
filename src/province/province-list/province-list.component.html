@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">District List</h4>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Mã Huyện</th>
+            <th>Tên Huyện</th>
+            <th>Cấp</th>
+            <th>Mã tỉnh</th>
+            <th>Kích hoạt</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let province of provinces">
+            <td class="py-1">{{ province.maHuyen }}</td>
+
+            <td>{{ province.tenHuyen }}</td>
+
+            <td>{{ province.cap }}</td>
+            <td>{{ province.maTinh }}</td>
+
+            <td>
+              <i
+                [class]="
+                  province.isActive
+                    ? 'mdi mdi-checkbox-marked-circle'
+                    : 'mdi mdi-close-octagon-outline'
+                "
+                style="font-size: 24px"
+              ></i>
+            </td>
+
+            <td>
+              <button class="btn btn-info">Edit</button>
+              <button class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

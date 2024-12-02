@@ -22,6 +22,7 @@ export class AccountComponent implements OnInit {
     this.accountService.getUser().subscribe(
       (response) => {
         this.user = response.userSession;
+        console.log(this.user);
       },
       (error) => {
         console.error('Error getting user data:', error);
