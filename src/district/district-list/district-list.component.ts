@@ -8,6 +8,8 @@ import { District } from '../../model/district';
   styleUrls: ['./district-list.component.css'],
 })
 export class DistrictListComponent implements OnInit {
+  isFormOpen = false;
+  itemToEdit: District | null = null;
   districts: District[] = [];
 
   constructor(private districtService: DistrictService) {}
@@ -21,5 +23,18 @@ export class DistrictListComponent implements OnInit {
         console.error('Error getting distric data:', error);
       }
     );
+  }
+
+  openForm(): void {
+    this.isFormOpen = true;
+    this.itemToEdit = null;
+  }
+
+  isItemAdded() {
+    this.isFormOpen = !this.isFormOpen;
+  }
+
+  onFormClosed() {
+    this.isFormOpen = false;
   }
 }

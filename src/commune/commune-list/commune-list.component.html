@@ -1,0 +1,91 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">District List</h4>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Mã xã</th>
+            <th>Tên xã</th>
+            <th>Mã huyện</th>
+            <th>Mã tỉnh</th>
+            <th>Cấp</th>
+            <th>Xã nghèo</th>
+            <th>Xã dân tộc</th>
+            <th>Xã miền núi</th>
+            <th>Là thành thị</th>
+            <th>Hoạt động</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items">
+            <td class="py-1">{{ item.maXa }}</td>
+
+            <td>{{ item.tenXa }}</td>
+
+            <td>{{ item.maHuyen }}</td>
+            <td>{{ item.maTinh }}</td>
+            <td>{{ item.cap }}</td>
+
+            <td>
+              <i
+                [class]="
+                  item.isXaNgheo
+                    ? 'mdi mdi-checkbox-marked-circle'
+                    : 'mdi mdi-close-octagon-outline'
+                "
+                style="font-size: 24px"
+              ></i>
+            </td>
+            <td>
+              <i
+                [class]="
+                  item.isXaDanToc
+                    ? 'mdi mdi-checkbox-marked-circle'
+                    : 'mdi mdi-close-octagon-outline'
+                "
+                style="font-size: 24px"
+              ></i>
+            </td>
+            <td>
+              <i
+                [class]="
+                  item.isXaMienNui
+                    ? 'mdi mdi-checkbox-marked-circle'
+                    : 'mdi mdi-close-octagon-outline'
+                "
+                style="font-size: 24px"
+              ></i>
+            </td>
+            <td>
+              <i
+                [class]="
+                  item.isThanhThi
+                    ? 'mdi mdi-checkbox-marked-circle'
+                    : 'mdi mdi-close-octagon-outline'
+                "
+                style="font-size: 24px"
+              ></i>
+            </td>
+            <td>
+              <i
+                [class]="
+                  item.isActive
+                    ? 'mdi mdi-checkbox-marked-circle'
+                    : 'mdi mdi-close-octagon-outline'
+                "
+                style="font-size: 24px"
+              ></i>
+            </td>
+
+            <td>
+              <button class="btn btn-info">Edit</button>
+              <button class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

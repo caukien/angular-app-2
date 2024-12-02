@@ -10,6 +10,7 @@ import { AppRoutingModule } from '../app/app-routing.module';
 import { AccountModule } from '../account/account.module';
 import { DistrictModule } from '../district/district.module';
 import { ProvinceModule } from '../province/province.module';
+import { CommuneModule } from '../commune/commune.module';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { ProvinceModule } from '../province/province.module';
     AccountModule,
     DistrictModule,
     ProvinceModule,
+    CommuneModule,
   ],
   declarations: [
     LayoutComponent,

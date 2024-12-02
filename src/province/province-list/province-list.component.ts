@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProvinceService } from '../province.service';
-import { Province } from '../../model/Province';
+import { Province } from '../../model/province';
 
 @Component({
   selector: 'app-province-list',
