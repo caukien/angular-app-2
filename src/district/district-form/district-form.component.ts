@@ -13,7 +13,7 @@ export class DistrictFormComponent implements OnInit {
   @Output() formClosed = new EventEmitter<void>();
   @Output() itemtAdded = new EventEmitter<any>();
 
-  product: District = new District();
+  itemInit: District = new District();
 
   isEditMode: boolean = false;
 
@@ -27,7 +27,7 @@ export class DistrictFormComponent implements OnInit {
     if (this.isOpen && this.itemForEdit != null) {
       this.mode = 'edit';
       this.isEditMode = true;
-      this.product = { ...this.itemForEdit };
+      this.itemInit = { ...this.itemForEdit };
     } else {
       this.mode = 'add';
       this.resetForm();
@@ -40,20 +40,26 @@ export class DistrictFormComponent implements OnInit {
   }
 
   resetForm(): void {
-    this.product = new District();
+    this.itemInit = new District();
     this.isEditMode = false;
     this.mode = 'add';
   }
 
-  addProduct(): void {
-    // if (this.mode === 'add') {
-    //   this.cateService.addCate(this.product);
-    //   this.productAdded.emit(true);
-    //   this.product = new Cate(0, '');
-    // } else if (this.mode === 'edit') {
-    //   this.saveChange(this.product);
-    //   this.productAdded.emit(true);
-    // }
+  addItem(): void {
+    if (this.mode === 'add') {
+      this.districtService.createOrUpdate(this.itemInit).subscribe({
+        next: (response) => {
+          this.itemtAdded.emit(true);
+          this.resetForm();
+        },
+        error: (error) => {
+          console.error('Request failed:', error);
+        },
+      });
+    } else if (this.mode === 'edit') {
+      this.saveChange(this.itemInit);
+      this.itemtAdded.emit(true);
+    }
   }
 
   saveChange(itemForEdit: District): void {

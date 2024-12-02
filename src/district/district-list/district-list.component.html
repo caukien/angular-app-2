@@ -36,7 +36,7 @@
 
             <td>
               <button class="btn btn-info">Edit</button>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-danger" (click)="delete(district.id)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -48,5 +48,5 @@
   [isOpen]="isFormOpen"
   [itemForEdit]="itemToEdit"
   (formClosed)="onFormClosed()"
-  (itemAdded)="isItemAdded()"
+  (itemtAdded)="isItemAdded($event)"
 />

@@ -41,4 +41,9 @@ export class DistrictService {
       this.initHeaders()
     );
   }
+
+  delete(id: number):Observable<any>{
+    const url = `${this.BaseEndpoint}/delete-common-result/${id}`;
+  return this.http.post(url, null, this.initHeaders());
+  }
 }

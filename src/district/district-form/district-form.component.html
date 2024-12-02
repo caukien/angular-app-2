@@ -15,16 +15,47 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="productName">Cate Name</label>
+            <label for="productName">Mã Tỉnh</label>
             <input
               type="text"
               class="form-control form-control-lg"
-              id="productName"
-              name="productName"
+              id="maTinh"
+              name="maTinh"
+              [(ngModel)] = "itemInit.maTinh"
               required
             />
+            <label for="productName">Tên Tỉnh</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="tenTinh"
+              name="tenTinh"
+              [(ngModel)] = "itemInit.tenTinh"
+              required
+            />
+            <label for="productName">Cấp</label>
+            <select
+              id="cap"
+              class="form-control"
+              name="cap"
+              [(ngModel)] = "itemInit.cap"
+              required
+            >
+              <option value="Tỉnh">Tỉnh</option>
+              <option value="Thành phố trung ương">Thành phố trung ương</option>
+            </select>
+            <label for="productName">Hoạt động</label>
+            <select
+              id="isActive"
+              class="form-control"
+              name="isActive"
+              required
+            >
+              <option value="true">Active</option>
+              <option value="false">No-Active</option>
+            </select>
           </div>
-          <button type="submit" class="btn btn-info" (click)="addProduct()">
+          <button type="submit" class="btn btn-info" (click)="addItem()">
             {{ mode === "edit" ? "Save Changes" : "Add" }}
           </button>
           <button type="button" class="btn btn-secondary" (click)="close()">

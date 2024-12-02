@@ -30,11 +30,45 @@ export class DistrictListComponent implements OnInit {
     this.itemToEdit = null;
   }
 
-  isItemAdded() {
-    this.isFormOpen = !this.isFormOpen;
+  isItemAdded(isAdded: boolean) {
+    if (isAdded) {
+      this.districtService.getDistricts().subscribe(
+        (response) => {
+          this.districts = response.items;
+          this.isFormOpen = false;
+        },
+        (error) => {
+          console.error('Error refreshing districts:', error);
+        }
+      );
+    } else {
+      this.isFormOpen = false;
+    }
   }
 
   onFormClosed() {
     this.isFormOpen = false;
   }
+
+  delete(id: number): void {
+    if (confirm('Bạn có muốn xóa?')) {
+      this.districtService.delete(id).subscribe({
+        next: (response) => {
+          console.log('District deleted successfully:', response);
+          this.districtService.getDistricts().subscribe(
+            (res) => {
+              this.districts = res.items;
+            },
+            (error) => {
+              console.error('Error refreshing district list:', error);
+            }
+          );
+        },
+        error: (error) => {
+          console.error('Error deleting district:', error);
+        },
+      });
+    }
+  }
+  
 }
