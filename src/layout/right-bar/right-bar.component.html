@@ -1,55 +1,53 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
-    <li class="nav-item active">
-      <a class="nav-link">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard">
         <i class="mdi mdi-grid-large menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-    <li class="nav-item" (click)="onItemClick('category')">
-      <a class="nav-link">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard/category">
         <i class="menu-icon mdi mdi-view-list"></i>
         <span class="menu-title">Category</span>
       </a>
     </li>
-    <li class="nav-item" (click)="onItemClick('product')">
-      <a class="nav-link">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard/product">
         <i class="menu-icon mdi mdi-animation"></i>
         <span class="menu-title">Product</span>
       </a>
     </li>
-    <li class="nav-item" (click)="onItemClick('district')">
-      <a class="nav-link">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard/district">
         <i class="menu-icon mdi mdi-animation"></i>
         <span class="menu-title">District</span>
       </a>
     </li>
-    <li class="nav-item" (click)="onItemClick('province')">
-      <a class="nav-link">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard/province">
         <i class="menu-icon mdi mdi-animation"></i>
         <span class="menu-title">Province</span>
       </a>
     </li>
-    <li class="nav-item" (click)="onItemClick('commune')">
-      <a class="nav-link">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard/commune">
         <i class="menu-icon mdi mdi-animation"></i>
         <span class="menu-title">Commune</span>
       </a>
     </li>
     <li class="nav-item nav-category">Account</li>
-    <li class="nav-item" (click)="onItemClick('account')">
-      <a class="nav-link">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard/account">
         <i class="menu-icon mdi mdi-account-circle-outline"></i>
         <span class="menu-title">Account</span>
       </a>
     </li>
-    <li class="nav-item" (click)="onLogoff()">
-      <a class="nav-link">
+    <li class="nav-item">
+      <a class="nav-link" (click)="onLogoff()">
         <i class="menu-icon mdi mdi-logout"></i>
         <span class="menu-title">Log-out</span>
       </a>
     </li>
   </ul>
 </nav>
-
-<router-outlet></router-outlet>

@@ -274,12 +274,7 @@
   <div class="main-panel">
     <!-- content-wrapper ends -->
     <div class="content-wrapper">
-      <app-product *ngIf="activeItem === 'product'" />
-      <app-category *ngIf="activeItem === 'category'" />
-      <app-account *ngIf="activeItem === 'account'" />
-      <app-district *ngIf="activeItem === 'district'" />
-      <app-province *ngIf="activeItem === 'province'" />
-      <app-commune *ngIf="activeItem === 'commune'" />
+      <router-outlet></router-outlet>
     </div>
     <app-footer />
     <!-- partial -->

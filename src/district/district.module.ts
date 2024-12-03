@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DistrictComponent } from './district.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DistrictService } from './district.service';
 import { DistrictListComponent } from './district-list/district-list.component';
 import { DistrictFormComponent } from './district-form/district-form.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule],
   declarations: [
     DistrictComponent,
     DistrictListComponent,

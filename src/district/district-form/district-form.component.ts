@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { District } from '../../model/district';
 import { DistrictService } from '../district.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-district-form',
@@ -19,7 +20,19 @@ export class DistrictFormComponent implements OnInit {
 
   mode: 'add' | 'edit' = 'add';
 
-  constructor(private districtService: DistrictService) {}
+  districtForm = this.fb.group({
+    maTinh: ['', [Validators.required]],
+    tenTinh: ['', [Validators.required]],
+    cap: ['', [Validators.required]],
+    isActive: [true, [Validators.required]],
+  });
+
+  constructor(
+    private districtService: DistrictService,
+    private fb: FormBuilder
+  ) {
+    this.districtForm;
+  }
 
   ngOnInit() {}
 
@@ -27,7 +40,12 @@ export class DistrictFormComponent implements OnInit {
     if (this.isOpen && this.itemForEdit != null) {
       this.mode = 'edit';
       this.isEditMode = true;
-      this.itemInit = { ...this.itemForEdit };
+      this.districtForm.patchValue({
+        maTinh: this.itemForEdit.maTinh,
+        tenTinh: this.itemForEdit.tenTinh,
+        cap: this.itemForEdit.cap,
+        isActive: this.itemForEdit.isActive,
+      });
     } else {
       this.mode = 'add';
       this.resetForm();
@@ -40,14 +58,18 @@ export class DistrictFormComponent implements OnInit {
   }
 
   resetForm(): void {
-    this.itemInit = new District();
+    this.districtForm.reset();
     this.isEditMode = false;
     this.mode = 'add';
   }
 
   addItem(): void {
+    const data: any = this.districtForm.value;
+    if (this.districtForm.invalid) {
+      return;
+    }
     if (this.mode === 'add') {
-      this.districtService.createOrUpdate(this.itemInit).subscribe({
+      this.districtService.createOrUpdate(data).subscribe({
         next: (response) => {
           this.itemtAdded.emit(true);
           this.resetForm();
@@ -57,12 +79,21 @@ export class DistrictFormComponent implements OnInit {
         },
       });
     } else if (this.mode === 'edit') {
-      this.saveChange(this.itemInit);
-      this.itemtAdded.emit(true);
+      this.saveChange(data);
     }
   }
 
   saveChange(itemForEdit: District): void {
-    // this.cateService.updateCate(itemForEdit);
+    console.log(itemForEdit);
+
+    this.districtService.createOrUpdate(itemForEdit).subscribe({
+      next: (response) => {
+        this.itemtAdded.emit(true);
+        this.resetForm();
+      },
+      error: (error) => {
+        console.error('Request failed:', error);
+      },
+    });
   }
 }

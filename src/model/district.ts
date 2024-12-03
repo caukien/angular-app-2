@@ -1,23 +1,23 @@
 export class District {
   id: number = 0;
-  strVungSinhThai: string = '';
-  strVungDiaLy: string = '';
-  strVungMien: string = '';
-  vungMien: any = null;
-  vungDiaLy: any = null;
+  // strVungSinhThai: string = '';
+  // strVungDiaLy: string = '';
+  // strVungMien: string = '';
+  // vungMien: any = null;
+  // vungDiaLy: any = null;
   maTinh: string = '';
   tenTinh: string = '';
   cap: string = '';
   isActive: boolean = true;
-  vungSinhThai: any = null;
+  // vungSinhThai: any = null;
 
   constructor(
     id: number = 0,
-    strVungSinhThai: string = '',
-    strVungDiaLy: string = '',
-    strVungMien: string = '',
-    vungMien: any = null,
-    vungDiaLy: any = null,
+    // strVungSinhThai: string = '',
+    // strVungDiaLy: string = '',
+    // strVungMien: string = '',
+    // vungMien: any = null,
+    // vungDiaLy: any = null,
     maTinh: string = '',
     tenTinh: string = '',
     cap: string = '',
@@ -25,16 +25,16 @@ export class District {
     vungSinhThai: any = null
   ) {
     this.id = id;
-    this.strVungSinhThai = strVungSinhThai;
-    this.strVungDiaLy = strVungDiaLy;
-    this.strVungMien = strVungMien;
-    this.vungMien = vungMien;
-    this.vungDiaLy = vungDiaLy;
+    // this.strVungSinhThai = strVungSinhThai;
+    // this.strVungDiaLy = strVungDiaLy;
+    // this.strVungMien = strVungMien;
+    // this.vungMien = vungMien;
+    // this.vungDiaLy = vungDiaLy;
     this.maTinh = maTinh;
     this.tenTinh = tenTinh;
     this.cap = cap;
     this.isActive = isActive;
-    this.vungSinhThai = vungSinhThai;
+    // this.vungSinhThai = vungSinhThai;
   }
 }
 

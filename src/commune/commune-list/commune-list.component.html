@@ -1,6 +1,16 @@
-<div class="card">
+<div class="text-center" *ngIf="isLoading">
+  <div
+    class="spinner-border"
+    style="width: 3rem; height: 3rem"
+    role="status"
+  ></div>
+</div>
+<div class="card" *ngIf="!isLoading">
   <div class="card-body">
-    <h4 class="card-title">District List</h4>
+    <h4 class="card-title">Commune List</h4>
+    <button type="button" class="btn btn-success" (click)="openForm()">
+      + Add New Commune
+    </button>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -32,8 +42,8 @@
               <i
                 [class]="
                   item.isXaNgheo
-                    ? 'mdi mdi-checkbox-marked-circle'
-                    : 'mdi mdi-close-octagon-outline'
+                    ? 'mdi mdi-check-circle-outline'
+                    : 'mdi mdi-close-circle-outline'
                 "
                 style="font-size: 24px"
               ></i>
@@ -42,8 +52,8 @@
               <i
                 [class]="
                   item.isXaDanToc
-                    ? 'mdi mdi-checkbox-marked-circle'
-                    : 'mdi mdi-close-octagon-outline'
+                    ? 'mdi mdi-check-circle-outline'
+                    : 'mdi mdi-close-circle-outline'
                 "
                 style="font-size: 24px"
               ></i>
@@ -52,8 +62,8 @@
               <i
                 [class]="
                   item.isXaMienNui
-                    ? 'mdi mdi-checkbox-marked-circle'
-                    : 'mdi mdi-close-octagon-outline'
+                    ? 'mdi mdi-check-circle-outline'
+                    : 'mdi mdi-close-circle-outline'
                 "
                 style="font-size: 24px"
               ></i>
@@ -62,8 +72,8 @@
               <i
                 [class]="
                   item.isThanhThi
-                    ? 'mdi mdi-checkbox-marked-circle'
-                    : 'mdi mdi-close-octagon-outline'
+                    ? 'mdi mdi-check-circle-outline'
+                    : 'mdi mdi-close-circle-outline'
                 "
                 style="font-size: 24px"
               ></i>
@@ -72,16 +82,20 @@
               <i
                 [class]="
                   item.isActive
-                    ? 'mdi mdi-checkbox-marked-circle'
-                    : 'mdi mdi-close-octagon-outline'
+                    ? 'mdi mdi-check-circle-outline'
+                    : 'mdi mdi-close-circle-outline'
                 "
                 style="font-size: 24px"
               ></i>
             </td>
 
             <td>
-              <button class="btn btn-info">Edit</button>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-info" (click)="chooseItem(item)">
+                Edit
+              </button>
+              <button class="btn btn-danger" (click)="delete(item.id)">
+                Delete
+              </button>
             </td>
           </tr>
         </tbody>
@@ -89,3 +103,9 @@
     </div>
   </div>
 </div>
+<app-commune-form
+  [isOpen]="isFormOpen"
+  [itemForEdit]="itemToEdit"
+  (formClosed)="onFormClosed()"
+  (itemtAdded)="isItemAdded($event)"
+/>

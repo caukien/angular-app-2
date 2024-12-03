@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add District</h5>
+        <h5 class="modal-title">Add Province</h5>
         <button
           type="button"
           class="close"
@@ -13,46 +13,58 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="districtForm" (ngSubmit)="addItem()">
+        <form>
           <div class="form-group">
+            <label for="productName">Mã Huyện</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="maHuyen"
+              name="maHuyen"
+              [(ngModel)]="itemInit.maHuyen"
+              required
+            />
+            <label for="productName">Tên Huyện</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="tenHuyen"
+              name="tenHuyen"
+              [(ngModel)]="itemInit.tenHuyen"
+              required
+            />
             <label for="productName">Mã Tỉnh</label>
             <input
               type="text"
               class="form-control form-control-lg"
               id="maTinh"
               name="maTinh"
-              formControlName="maTinh"
-            />
-            <label for="productName">Tên Tỉnh</label>
-            <input
-              type="text"
-              class="form-control form-control-lg"
-              id="tenTinh"
-              name="tenTinh"
-              formControlName="tenTinh"
+              [(ngModel)]="itemInit.maTinh"
+              required
             />
             <label for="productName">Cấp</label>
             <select
               id="cap"
               class="form-control"
               name="cap"
-              formControlName="cap"
+              [(ngModel)]="itemInit.cap"
+              required
             >
-              <option value="Tỉnh">Tỉnh</option>
-              <option value="Thành phố trung ương">Thành phố trung ương</option>
+              <option value="Huyện">Huyện</option>
             </select>
             <label for="productName">Hoạt động</label>
             <select
               id="isActive"
               class="form-control"
               name="isActive"
-              formControlName="isActive"
+              [(ngModel)]="itemInit.isActive"
+              required
             >
               <option value="true">Active</option>
               <option value="false">No-Active</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-info">
+          <button type="submit" class="btn btn-info" (click)="addItem()">
             {{ mode === "edit" ? "Save Changes" : "Add" }}
           </button>
           <button type="button" class="btn btn-secondary" (click)="close()">

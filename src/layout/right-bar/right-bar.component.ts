@@ -11,11 +11,7 @@ export class RightBarComponent implements OnInit {
   hasLoggined = localStorage.getItem('access_token');
   constructor(private router: Router) {}
 
-  ngOnInit() {
-    if (this.hasLoggined == null) {
-      this.router.navigateByUrl('/login');
-    }
-  }
+  ngOnInit() {}
 
   onItemClick(item: string): void {
     this.menuItemSelected.emit(item);

@@ -1,0 +1,155 @@
+<div class="modal" tabindex="-1" role="dialog" *ngIf="isOpen">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Commune</h5>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="close()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="maXa">Mã Xã</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="maXa"
+                  name="maXa"
+                  [(ngModel)]="itemInit.maXa"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="tenXa">Tên Xã</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="tenXa"
+                  name="tenXa"
+                  [(ngModel)]="itemInit.tenXa"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="cap">Cấp</label>
+                <select
+                  id="cap"
+                  class="form-control"
+                  name="cap"
+                  [(ngModel)]="itemInit.cap"
+                  required
+                >
+                  <option value="Huyện">Huyện</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="maTinh">Mã Tỉnh</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="maTinh"
+                  name="maTinh"
+                  [(ngModel)]="itemInit.maTinh"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="maHuyen">Mã Huyện</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="maHuyen"
+                  name="maHuyen"
+                  [(ngModel)]="itemInit.maHuyen"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="isXaNgheo">Xã nghèo</label>
+                <select
+                  id="isXaNgheo"
+                  class="form-control"
+                  name="isXaNgheo"
+                  [(ngModel)]="itemInit.isXaNgheo"
+                  required
+                >
+                  <option value="true">Có</option>
+                  <option value="false">Không</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="isXaDanToc">Xã dân tộc</label>
+                <select
+                  id="isXaDanToc"
+                  class="form-control"
+                  name="isXaDanToc"
+                  [(ngModel)]="itemInit.isXaDanToc"
+                  required
+                >
+                  <option value="true">Có</option>
+                  <option value="false">Không</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="isXaMienNui">Xã miền núi</label>
+                <select
+                  id="isXaMienNui"
+                  class="form-control"
+                  name="isXaMienNui"
+                  [(ngModel)]="itemInit.isXaMienNui"
+                  required
+                >
+                  <option value="true">Có</option>
+                  <option value="false">Không</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="isThanhThi">Là thành thị</label>
+                <select
+                  id="isThanhThi"
+                  class="form-control"
+                  name="isThanhThi"
+                  [(ngModel)]="itemInit.isThanhThi"
+                  required
+                >
+                  <option value="true">Có</option>
+                  <option value="false">Không</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="isActive">Hoạt động</label>
+                <select
+                  id="isActive"
+                  class="form-control"
+                  name="isActive"
+                  [(ngModel)]="itemInit.isActive"
+                  required
+                >
+                  <option value="true">Active</option>
+                  <option value="false">No-Active</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-info" (click)="addItem()">
+            {{ mode === "edit" ? "Save Changes" : "Add" }}
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="close()">
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

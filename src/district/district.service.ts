@@ -35,6 +35,13 @@ export class DistrictService {
   }
 
   createOrUpdate(payload: any): Observable<any> {
+    if (payload.id > 0) {
+      return this.http.post(
+        `${this.BaseEndpoint}/create-or-update`,
+        payload,
+        this.initHeaders()
+      );
+    }
     return this.http.post(
       `${this.BaseEndpoint}/create-or-update`,
       payload,
@@ -42,8 +49,8 @@ export class DistrictService {
     );
   }
 
-  delete(id: number):Observable<any>{
+  delete(id: number): Observable<any> {
     const url = `${this.BaseEndpoint}/delete-common-result/${id}`;
-  return this.http.post(url, null, this.initHeaders());
+    return this.http.post(url, null, this.initHeaders());
   }
 }

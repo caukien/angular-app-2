@@ -11,10 +11,13 @@ import { AccountModule } from '../account/account.module';
 import { DistrictModule } from '../district/district.module';
 import { ProvinceModule } from '../province/province.module';
 import { CommuneModule } from '../commune/commune.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
+    AppRoutingModule,
     ProductModule,
     CategoryModule,
     AppRoutingModule,

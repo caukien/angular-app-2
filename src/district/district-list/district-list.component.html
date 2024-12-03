@@ -1,4 +1,17 @@
-<div class="card">
+<div class="page-content page-container" id="page-content" *ngIf="isLoading">
+  <div class="padding">
+    <div class="row container d-flex justify-content-center">
+      <div class="col-md-4 col-sm-6 grid-margin stretch-card">
+        <div class="loader-demo-box">
+          <div class="jumping-dots-loader">
+            <span></span> <span></span> <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card" *ngIf="!isLoading">
   <div class="card-body">
     <h4 class="card-title">District List</h4>
     <button type="button" class="btn btn-success" (click)="openForm()">
@@ -27,16 +40,24 @@
               <i
                 [class]="
                   district.isActive
-                    ? 'mdi mdi-checkbox-marked-circle'
-                    : 'mdi mdi-close-octagon-outline'
+                    ? 'mdi mdi-check-circle-outline'
+                    : 'mdi mdi-close-circle-outline'
                 "
                 style="font-size: 24px"
               ></i>
             </td>
 
             <td>
-              <button class="btn btn-info">Edit</button>
-              <button class="btn btn-danger" (click)="delete(district.id)">Delete</button>
+              <button
+                class="btn btn-info"
+                (click)="chooseItem(district, 'edit')"
+              >
+                <i class="mdi mdi-border-color"></i>
+                Edit
+              </button>
+              <button class="btn btn-danger" (click)="delete(district.id)">
+                <i class="mdi mdi-delete-forever"></i>Delete
+              </button>
             </td>
           </tr>
         </tbody>

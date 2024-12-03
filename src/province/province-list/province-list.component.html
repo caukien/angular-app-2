@@ -1,6 +1,18 @@
-<div class="card">
+<div class="container" *ngIf="isLoading">
+  <div class="text-center">
+    <div
+      class="spinner-border"
+      style="width: 3rem; height: 3rem"
+      role="status"
+    ></div>
+  </div>
+</div>
+<div class="card" *ngIf="!isLoading">
   <div class="card-body">
-    <h4 class="card-title">District List</h4>
+    <h4 class="card-title">Province List</h4>
+    <button type="button" class="btn btn-success" (click)="openForm()">
+      + Add New Province
+    </button>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -26,16 +38,20 @@
               <i
                 [class]="
                   province.isActive
-                    ? 'mdi mdi-checkbox-marked-circle'
-                    : 'mdi mdi-close-octagon-outline'
+                    ? 'mdi mdi-check-circle-outline'
+                    : 'mdi mdi-close-circle-outline'
                 "
                 style="font-size: 24px"
               ></i>
             </td>
 
             <td>
-              <button class="btn btn-info">Edit</button>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-info" (click)="chooseItem(province)">
+                Edit
+              </button>
+              <button class="btn btn-danger" (click)="delete(province.id)">
+                Delete
+              </button>
             </td>
           </tr>
         </tbody>
@@ -43,3 +59,9 @@
     </div>
   </div>
 </div>
+<app-province-form
+  [isOpen]="isFormOpen"
+  [itemForEdit]="itemToEdit"
+  (formClosed)="onFormClosed()"
+  (itemtAdded)="isItemAdded($event)"
+/>

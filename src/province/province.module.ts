@@ -5,10 +5,15 @@ import { ProvinceListComponent } from './province-list/province-list.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProvinceService } from './province.service';
+import { ProvinceFormComponent } from './province-form/province-form.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, HttpClientModule],
-  declarations: [ProvinceComponent, ProvinceListComponent],
+  declarations: [
+    ProvinceComponent,
+    ProvinceListComponent,
+    ProvinceFormComponent,
+  ],
   exports: [ProvinceComponent],
   providers: [ProvinceService],
 })

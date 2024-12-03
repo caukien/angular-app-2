@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Root } from '../model/account';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ProvinceService {
   private BaseEndpoint: string =
     'http://test.nghiencuukhoahoc.com.vn/api/master-data/huyen';
@@ -43,5 +41,10 @@ export class ProvinceService {
       payload,
       this.initHeaders()
     );
+  }
+
+  delete(id: number): Observable<any> {
+    const url = `${this.BaseEndpoint}/delete-common-result/${id}`;
+    return this.http.post(url, null, this.initHeaders());
   }
 }
