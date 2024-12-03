@@ -25,6 +25,7 @@ export class DistrictFormComponent implements OnInit {
     tenTinh: ['', [Validators.required]],
     cap: ['', [Validators.required]],
     isActive: [true, [Validators.required]],
+    id: 0,
   });
 
   constructor(
@@ -45,6 +46,7 @@ export class DistrictFormComponent implements OnInit {
         tenTinh: this.itemForEdit.tenTinh,
         cap: this.itemForEdit.cap,
         isActive: this.itemForEdit.isActive,
+        id: this.itemForEdit.id,
       });
     } else {
       this.mode = 'add';
