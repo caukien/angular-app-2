@@ -47,4 +47,14 @@ export class CommuneService {
     const url = `${this.BaseEndpoint}/delete-common-result/${id}`;
     return this.http.post(url, null, this.initHeaders());
   }
+
+  search(searchObj: any): Observable<any> {
+    console.log(searchObj);
+
+    return this.http.post<Root>(
+      `${this.BaseEndpoint}/get-list`,
+      searchObj,
+      this.initHeaders()
+    );
+  }
 }

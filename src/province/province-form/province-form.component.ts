@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Province } from '../../model/province';
 import { ProvinceService } from '../province.service';
+import { DistrictService } from '../../district/district.service';
+import { District } from '../../model/district';
 
 @Component({
   selector: 'app-province-form',
@@ -14,14 +16,26 @@ export class ProvinceFormComponent implements OnInit {
   @Output() itemtAdded = new EventEmitter<any>();
 
   itemInit: Province = new Province();
+  districtData: District[] = [];
 
   isEditMode: boolean = false;
 
   mode: 'add' | 'edit' = 'add';
 
-  constructor(private provinceService: ProvinceService) {}
+  constructor(
+    private provinceService: ProvinceService,
+    private districtService: DistrictService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadDistrictData();
+  }
+
+  loadDistrictData() {
+    this.districtService.getDistricts().subscribe((res) => {
+      this.districtData = res.items;
+    });
+  }
 
   ngOnChanges(): void {
     if (this.isOpen && this.itemForEdit != null) {

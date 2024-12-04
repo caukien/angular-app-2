@@ -13,6 +13,10 @@ export class CommuneListComponent implements OnInit {
   itemToEdit: Commune | null = null;
   isLoading: boolean = false;
 
+  onDataSearched(data: any) {
+    this.items = data;
+  }
+
   constructor(private communeService: CommuneService) {}
 
   ngOnInit() {

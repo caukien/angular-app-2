@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProvinceService } from './province.service';
 import { ProvinceFormComponent } from './province-form/province-form.component';
+import { DistrictService } from '../district/district.service';
 
 @NgModule({
   imports: [CommonModule, FormsModule, HttpClientModule],
@@ -15,6 +16,6 @@ import { ProvinceFormComponent } from './province-form/province-form.component';
     ProvinceFormComponent,
   ],
   exports: [ProvinceComponent],
-  providers: [ProvinceService],
+  providers: [ProvinceService, DistrictService],
 })
 export class ProvinceModule {}

@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Commune } from '../../model/commune';
 import { CommuneService } from '../commune.service';
+import { DistrictService } from '../../district/district.service';
+import { ProvinceService } from '../../province/province.service';
+import { District } from '../../model/district';
+import { Province } from '../../model/province';
 
 @Component({
   selector: 'app-commune-form',
@@ -18,10 +22,30 @@ export class CommuneFormComponent implements OnInit {
   isEditMode: boolean = false;
 
   mode: 'add' | 'edit' = 'add';
+  districtData: District[] = [];
+  provinceData: Province[] = [];
 
-  constructor(private communeService: CommuneService) {}
+  constructor(
+    private communeService: CommuneService,
+    private districtService: DistrictService,
+    private provinceService: ProvinceService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadDistrictData();
+    this.loadProvinceData();
+  }
+
+  loadDistrictData() {
+    this.districtService.getDistricts().subscribe((res) => {
+      this.districtData = res.items;
+    });
+  }
+  loadProvinceData() {
+    this.provinceService.getProvince().subscribe((res) => {
+      this.provinceData = res.items;
+    });
+  }
 
   ngOnChanges(): void {
     if (this.isOpen && this.itemForEdit != null) {

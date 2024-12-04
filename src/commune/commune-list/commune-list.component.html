@@ -11,6 +11,7 @@
     <button type="button" class="btn btn-success" (click)="openForm()">
       + Add New Commune
     </button>
+    <app-commune-search (dataSearched)="onDataSearched($event)" />
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>

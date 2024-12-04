@@ -33,15 +33,22 @@
               [(ngModel)]="itemInit.tenHuyen"
               required
             />
-            <label for="productName">Mã Tỉnh</label>
-            <input
-              type="text"
-              class="form-control form-control-lg"
+            <label for="maTinh">Mã Tỉnh</label>
+            <select
               id="maTinh"
+              class="form-control form-control-lg"
               name="maTinh"
               [(ngModel)]="itemInit.maTinh"
               required
-            />
+            >
+              <option value="" disabled selected>Chọn Mã Tỉnh</option>
+              <option
+                *ngFor="let district of districtData"
+                [value]="district.maTinh"
+              >
+                {{ district.tenTinh }}
+              </option>
+            </select>
             <label for="productName">Cấp</label>
             <select
               id="cap"

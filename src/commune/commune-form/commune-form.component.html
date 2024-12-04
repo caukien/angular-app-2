@@ -52,25 +52,39 @@
               </div>
               <div class="form-group">
                 <label for="maTinh">Mã Tỉnh</label>
-                <input
-                  type="text"
-                  class="form-control"
+                <select
                   id="maTinh"
+                  class="form-control"
                   name="maTinh"
                   [(ngModel)]="itemInit.maTinh"
                   required
-                />
+                >
+                  <option value="" disabled selected>Chọn Mã Tỉnh</option>
+                  <option
+                    *ngFor="let district of districtData"
+                    [value]="district.maTinh"
+                  >
+                    {{ district.tenTinh }}
+                  </option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="maHuyen">Mã Huyện</label>
-                <input
-                  type="text"
-                  class="form-control"
+                <select
                   id="maHuyen"
+                  class="form-control"
                   name="maHuyen"
                   [(ngModel)]="itemInit.maHuyen"
                   required
-                />
+                >
+                  <option value="" disabled selected>Chọn Mã Huyện</option>
+                  <option
+                    *ngFor="let province of provinceData"
+                    [value]="province.maHuyen"
+                  >
+                    {{ province.tenHuyen }}
+                  </option>
+                </select>
               </div>
             </div>
 
