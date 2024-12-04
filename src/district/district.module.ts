@@ -6,9 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { DistrictService } from './district.service';
 import { DistrictListComponent } from './district-list/district-list.component';
 import { DistrictFormComponent } from './district-form/district-form.component';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, NgbPaginationModule],
   declarations: [
     DistrictComponent,
     DistrictListComponent,

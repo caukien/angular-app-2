@@ -20,14 +20,14 @@ export class DistrictService {
 
   constructor(private http: HttpClient) {}
 
-  getDistricts(): Observable<any> {
+  getDistricts(skipCount: number = 0, maxResultCount: number = 10): Observable<any> {
     const body = {
-      filter: null,
+      filter: "",
       isActive: null,
-      skipCount: 0,
-      maxResultCount: 10,
+      skipCount,
+      maxResultCount,
     };
-    return this.http.post<Root>(
+    return this.http.post<any>(
       `${this.BaseEndpoint}/get-list`,
       body,
       this.initHeaders()

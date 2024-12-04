@@ -13,6 +13,10 @@ export class DistrictListComponent implements OnInit {
   districts: District[] = [];
   isLoading: boolean = false;
 
+  totalItems: number = 0;
+  currentPage: number = 1;
+  pageSize: number = 10;
+
   constructor(private districtService: DistrictService) {}
 
   ngOnInit() {
@@ -28,15 +32,22 @@ export class DistrictListComponent implements OnInit {
   }
   loadData(): void {
     this.isLoading = true;
-    this.districtService.getDistricts().subscribe(
+    const skipCount = (this.currentPage - 1) * this.pageSize;
+    this.districtService.getDistricts(skipCount, this.pageSize).subscribe(
       (response) => {
         this.districts = response.items;
+        this.totalItems=response.totalCount;
         this.isLoading = false;
       },
       (error) => {
         this.isLoading = false;
       }
     );
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.loadData();
   }
 
   openForm(): void {
