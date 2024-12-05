@@ -28,18 +28,14 @@ export class CommuneService {
       maTinh: '',
       maxResultCount: 10,
     };
-    return this.http.post<Root>(
-      `${this.BaseEndpoint}/get-list`,
-      body,
-      this.initHeaders()
-    );
+    return this.http.post<Root>(`${this.BaseEndpoint}/get-list`, body);
   }
 
   createOrUpdate(payload: any): Observable<any> {
     return this.http.post(
       `${this.BaseEndpoint}/create-or-update`,
-      payload,
-      this.initHeaders()
+      payload
+      // this.initHeaders()
     );
   }
 
@@ -49,12 +45,10 @@ export class CommuneService {
   }
 
   search(searchObj: any): Observable<any> {
-    console.log(searchObj);
-
     return this.http.post<Root>(
       `${this.BaseEndpoint}/get-list`,
-      searchObj,
-      this.initHeaders()
+      searchObj
+      // this.initHeaders()
     );
   }
 }

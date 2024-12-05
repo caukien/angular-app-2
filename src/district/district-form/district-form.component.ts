@@ -25,7 +25,7 @@ export class DistrictFormComponent implements OnInit {
     tenTinh: ['', [Validators.required]],
     cap: ['', [Validators.required]],
     isActive: [true, [Validators.required]],
-    id: 0,
+    id: [0],
   });
 
   constructor(
@@ -70,6 +70,8 @@ export class DistrictFormComponent implements OnInit {
     if (this.districtForm.invalid) {
       return;
     }
+    data.id = 0;
+
     if (this.mode === 'add') {
       this.districtService.createOrUpdate(data).subscribe({
         next: (response) => {
@@ -86,8 +88,6 @@ export class DistrictFormComponent implements OnInit {
   }
 
   saveChange(itemForEdit: District): void {
-    console.log(itemForEdit);
-
     this.districtService.createOrUpdate(itemForEdit).subscribe({
       next: (response) => {
         this.itemtAdded.emit(true);

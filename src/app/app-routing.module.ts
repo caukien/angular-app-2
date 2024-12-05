@@ -58,6 +58,7 @@ const routes: Routes = [
       {
         path: 'commune',
         component: CommuneComponent,
+        pathMatch: 'full',
       },
     ],
   },

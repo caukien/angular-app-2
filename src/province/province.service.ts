@@ -47,4 +47,8 @@ export class ProvinceService {
     const url = `${this.BaseEndpoint}/delete-common-result/${id}`;
     return this.http.post(url, null, this.initHeaders());
   }
+
+  search(searchObj: any): Observable<any> {
+    return this.http.post<Root>(`${this.BaseEndpoint}/get-list`, searchObj);
+  }
 }

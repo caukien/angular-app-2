@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Commune } from '../../model/commune';
 import { CommuneService } from '../commune.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommuneSearchComponent } from '../commune-search/commune-search.component';
 
 @Component({
   selector: 'app-commune-list',
@@ -8,32 +10,78 @@ import { CommuneService } from '../commune.service';
   styleUrls: ['./commune-list.component.css'],
 })
 export class CommuneListComponent implements OnInit {
+  @ViewChild(CommuneSearchComponent) searchComponent!: CommuneSearchComponent;
+
   items: Commune[] = [];
   isFormOpen = false;
   itemToEdit: Commune | null = null;
   isLoading: boolean = false;
 
+  totalItems = 0;
+  pageSize = 10;
+  currentPage = 1;
+
+  // onDataSearched(data: any) {
+  //   this.items = data;
+  // }
+
+  constructor(
+    private communeService: CommuneService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  ngOnInit() {}
+
+  onPageChange(page: number) {
+    this.currentPage = page;
+    this.searchComponent.onPageChange(page);
+  }
+  // loadData(): void {
+  //   this.isLoading = true;
+  //   const skipCount = (this.currentPage - 1) * this.pageSize;
+
+  //   const searchParams = {
+  //     filter: this.searchString,
+  //     maTinh: this.maTinh,
+  //     maHuyen: this.maHuyen,
+  //     isActive: this.isActive,
+  //     skipCount: skipCount,
+  //     maxResultCount: this.pageSize,
+  //   };
+
+  //   this.communeService.getCommune(searchParams).subscribe(
+  //     (response) => {
+  //       this.items = response.items;
+  //       this.totalItems = response.totalCount;
+  //       this.isLoading = false;
+  //     },
+  //     (error) => {
+  //       console.error('Error loading commune:', error);
+  //       this.isLoading = false;
+  //     }
+  //   );
+  // }
+
   onDataSearched(data: any) {
-    this.items = data;
+    this.items = data.items;
+    this.totalItems = data.totalItems;
   }
 
-  constructor(private communeService: CommuneService) {}
-
-  ngOnInit() {
-    this.loadData();
-  }
-  loadData(): void {
-    this.isLoading = true;
-    this.communeService.getCommune().subscribe(
-      (response) => {
-        this.items = response.items;
-        this.isLoading = false;
-      },
-      (error) => {
-        this.isLoading = false;
-      }
-    );
-  }
+  // onPageChange(page: number) {
+  //   this.router.navigate([], {
+  //     relativeTo: this.route,
+  //     queryParams: {
+  //       page: page,
+  //       pageSize: this.pageSize,
+  //       searchString: this.searchString,
+  //       maTinh: this.maTinh,
+  //       maHuyen: this.maHuyen,
+  //       isActive: this.isActive,
+  //     },
+  //     queryParamsHandling: 'merge',
+  //   });
+  // }
 
   openForm(): void {
     this.isFormOpen = true;

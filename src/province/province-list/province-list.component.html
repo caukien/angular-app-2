@@ -13,6 +13,7 @@
     <button type="button" class="btn btn-success" (click)="openForm()">
       + Add New Province
     </button>
+    <app-province-search (dataSearched)="onDataSearched($event)" />
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -56,6 +57,15 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="d-flex justify-content-end mt-3">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="currentPage"
+        [pageSize]="pageSize"
+        (pageChange)="onPageChange($event)"
+        [maxSize]="5"
+      ></ngb-pagination>
     </div>
   </div>
 </div>

@@ -102,6 +102,13 @@
         </tbody>
       </table>
     </div>
+    <ngb-pagination
+      [collectionSize]="totalItems"
+      [(page)]="currentPage"
+      [pageSize]="pageSize"
+      (pageChange)="onPageChange($event)"
+      [maxSize]="5"
+    ></ngb-pagination>
   </div>
 </div>
 <app-commune-form

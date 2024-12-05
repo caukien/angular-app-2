@@ -17,6 +17,7 @@
     <button type="button" class="btn btn-success" (click)="openForm()">
       + Add New District
     </button>
+    <app-district-search (dataSearched)="onDataSearched($event)" />
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -69,7 +70,6 @@
         [(page)]="currentPage"
         [pageSize]="pageSize"
         (pageChange)="onPageChange($event)"
-        [boundaryLinks]="true"
         [maxSize]="5"
       ></ngb-pagination>
     </div>

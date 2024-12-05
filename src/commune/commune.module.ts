@@ -9,9 +9,16 @@ import { CommuneFormComponent } from './commune-form/commune-form.component';
 import { CommuneSearchComponent } from './commune-search/commune-search.component';
 import { DistrictService } from '../district/district.service';
 import { ProvinceService } from '../province/province.service';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgbPaginationModule,
+  ],
   declarations: [
     CommuneComponent,
     CommuneListComponent,

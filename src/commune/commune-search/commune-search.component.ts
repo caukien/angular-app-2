@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { District } from '../../model/district';
 import { Province } from '../../model/province';
 import { CommuneService } from '../commune.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-commune-search',
@@ -16,16 +17,23 @@ export class CommuneSearchComponent implements OnInit {
   provinceData: Province[] = [];
   @Output() dataSearched = new EventEmitter<any>();
 
+  currentPage = 1;
+  pageSize = 10;
+  totalItems = 0;
+
   constructor(
     private districtService: DistrictService,
     private provinceservice: ProvinceService,
     private communeService: CommuneService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.loadDistrictData();
     this.loadProvinceData();
+    this.loadSearchResults();
   }
 
   searchForm = this.fb.group({
@@ -34,9 +42,36 @@ export class CommuneSearchComponent implements OnInit {
     tenTinh: [''],
     maHuyen: [''],
     tenHuyen: [''],
-    isActive: [true],
+    isActive: [null],
     maxResultCount: [10],
   });
+
+  loadSearchResults() {
+    const skipCount = (this.currentPage - 1) * this.pageSize;
+    const searchParams = {
+      ...this.searchForm.value,
+      skipCount: skipCount,
+      maxResultCount: this.pageSize,
+    };
+
+    this.communeService.search(searchParams).subscribe(
+      (response) => {
+        this.totalItems = response.totalCount;
+        this.dataSearched.emit({
+          items: response.items,
+          totalItems: response.totalCount,
+        });
+      },
+      (error) => {
+        console.error('Error searching communes:', error);
+      }
+    );
+  }
+
+  onPageChange(page: number) {
+    this.currentPage = page;
+    this.loadSearchResults();
+  }
 
   loadDistrictData() {
     this.districtService.getDistricts().subscribe(
@@ -60,25 +95,21 @@ export class CommuneSearchComponent implements OnInit {
   }
 
   onSearch() {
-    const search = this.searchForm.value;
-    this.communeService.search(search).subscribe((res) => {
-      this.dataSearched.emit(res.items);
-    });
+    this.currentPage = 1;
+    this.loadSearchResults();
   }
   resetSearch(): void {
     this.resetForm();
-    this.communeService.search(this.searchForm.value).subscribe((res) => {
-      this.dataSearched.emit(res.items);
-    });
+    this.currentPage = 1;
+    this.loadSearchResults();
   }
+
   resetForm(): void {
     this.searchForm.reset({
       filter: '',
       maTinh: '',
-      tenTinh: '',
       maHuyen: '',
-      tenHuyen: '',
-      isActive: true,
+      isActive: null,
       maxResultCount: 10,
     });
   }

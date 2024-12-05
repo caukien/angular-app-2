@@ -19,18 +19,6 @@
       </select>
     </div>
     <div class="col-3">
-      <label for="maHuyen">Quận/Huyện</label>
-      <select class="form-control" formControlName="maHuyen" id="maHuyen">
-        <option value="">-Chọn-</option>
-        <option
-          *ngFor="let province of provinceData"
-          [value]="province.maHuyen"
-        >
-          {{ province.tenHuyen }}
-        </option>
-      </select>
-    </div>
-    <div class="col-3">
       <label for="">Hoạt động</label>
       <select
         class="form-control"
