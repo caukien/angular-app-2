@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProvinceService } from '../province.service';
 import { Province } from '../../model/province';
-import { ProvinceSearchComponent } from '../province-search/province-search.component';
+import { SearchFormComponent } from '../../shared_module/search-form/search-form.component';
 
 @Component({
   selector: 'app-province-list',
@@ -9,7 +9,7 @@ import { ProvinceSearchComponent } from '../province-search/province-search.comp
   styleUrls: ['./province-list.component.css'],
 })
 export class ProvinceListComponent implements OnInit {
-  @ViewChild(ProvinceSearchComponent) searchComponent!: ProvinceSearchComponent;
+  @ViewChild(SearchFormComponent) searchComponent!: SearchFormComponent;
   provinces: Province[] = [];
   isFormOpen = false;
   itemToEdit: Province | null = null;
@@ -19,7 +19,7 @@ export class ProvinceListComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 10;
 
-  constructor(private provinceservice: ProvinceService) {}
+  constructor(protected provinceservice: ProvinceService) {}
 
   ngOnInit() {}
   onDataSearched(data: any) {

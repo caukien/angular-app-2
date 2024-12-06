@@ -70,9 +70,9 @@ export class DistrictFormComponent implements OnInit {
     if (this.districtForm.invalid) {
       return;
     }
-    data.id = 0;
 
     if (this.mode === 'add') {
+      data.id = 0;
       this.districtService.createOrUpdate(data).subscribe({
         next: (response) => {
           this.itemtAdded.emit(true);

@@ -11,7 +11,26 @@
     <button type="button" class="btn btn-success" (click)="openForm()">
       + Add New Commune
     </button>
-    <app-commune-search (dataSearched)="onDataSearched($event)" />
+    <app-search-form
+      [fields]="[
+        {
+          name: 'filter',
+          type: 'text',
+          label: 'Tìm bằng mã hoặc tên xã',
+          defaultValue: ''
+        },
+        { name: 'maTinh', type: 'text', label: 'Mã Tỉnh', defaultValue: '' },
+        { name: 'maHuyen', type: 'text', label: 'Mã Huyện', defaultValue: '' },
+        {
+          name: 'isActive',
+          type: 'boolean',
+          label: 'Hoạt động',
+          defaultValue: null
+        }
+      ]"
+      [service]="communeService"
+      (dataSearched)="onDataSearched($event)"
+    />
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>

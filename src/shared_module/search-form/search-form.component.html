@@ -1,0 +1,36 @@
+<form class="forms-sample" [formGroup]="searchForm" (ngSubmit)="onSearch()">
+  <div class="form-group row">
+    <div *ngFor="let field of fields" class="col-xxl-3 col-xl-4 col-lg-12">
+      <label>{{ field.label }}</label>
+      <input
+        *ngIf="field.type === 'text'"
+        [formControlName]="field.name"
+        type="text"
+        class="form-control"
+      />
+      <select
+        *ngIf="field.type === 'boolean'"
+        [formControlName]="field.name"
+        class="form-control"
+      >
+        <option [value]="null">Tất cả</option>
+        <option [value]="true">Hoạt động</option>
+        <option [value]="false">Không hoạt động</option>
+      </select>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-info btn-icon-text">
+    <i class="mdi mdi-magnify btn-icon-prepend"></i> Tìm
+  </button>
+  <button
+    type="button"
+    class="btn btn-light btn-icon-text"
+    (click)="resetSearch()"
+  >
+    <i class="ti-reload btn-icon-prepend"></i>Reset
+  </button>
+</form>
+
+<div *ngIf="totalItems > 0">
+  <p>Tổng kết quả: {{ totalItems }}</p>
+</div>

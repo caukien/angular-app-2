@@ -6,10 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommuneService } from './commune.service';
 import { CommuneListComponent } from './commune-list/commune-list.component';
 import { CommuneFormComponent } from './commune-form/commune-form.component';
-import { CommuneSearchComponent } from './commune-search/commune-search.component';
 import { DistrictService } from '../district/district.service';
 import { ProvinceService } from '../province/province.service';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchFormModule } from '../shared_module/search-form/search-form.module';
 
 @NgModule({
   imports: [
@@ -18,13 +18,9 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     ReactiveFormsModule,
     NgbPaginationModule,
+    SearchFormModule,
   ],
-  declarations: [
-    CommuneComponent,
-    CommuneListComponent,
-    CommuneFormComponent,
-    CommuneSearchComponent,
-  ],
+  declarations: [CommuneComponent, CommuneListComponent, CommuneFormComponent],
   exports: [CommuneComponent],
   providers: [CommuneService, DistrictService, ProvinceService],
 })

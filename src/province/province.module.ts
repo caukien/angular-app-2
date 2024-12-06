@@ -8,7 +8,7 @@ import { ProvinceService } from './province.service';
 import { ProvinceFormComponent } from './province-form/province-form.component';
 import { DistrictService } from '../district/district.service';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
-import { ProvinceSearchComponent } from './province-search/province-search.component';
+import { SearchFormModule } from '../shared_module/search-form/search-form.module';
 
 @NgModule({
   imports: [
@@ -17,12 +17,12 @@ import { ProvinceSearchComponent } from './province-search/province-search.compo
     HttpClientModule,
     NgbPagination,
     ReactiveFormsModule,
+    SearchFormModule,
   ],
   declarations: [
     ProvinceComponent,
     ProvinceListComponent,
     ProvinceFormComponent,
-    ProvinceSearchComponent,
   ],
   exports: [ProvinceComponent],
   providers: [ProvinceService, DistrictService],
