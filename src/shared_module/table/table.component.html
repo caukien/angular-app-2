@@ -1,0 +1,44 @@
+<div *ngIf="isLoading" class="loading">Loading...</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let columnName of columnNames">{{ columnName }}</th>
+      <th *ngIf="actions.length > 0">Thao tác</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+      <td *ngFor="let column of columns">
+        <ng-container *ngIf="isBoolean(item[column]); else defaultColumn">
+          <i
+            [class]="
+              item[column]
+                ? 'mdi mdi-check-circle-outline'
+                : 'mdi mdi-close-circle-outline'
+            "
+            style="font-size: 24px"
+          ></i>
+        </ng-container>
+        <ng-template #defaultColumn>{{ item[column] }}</ng-template>
+      </td>
+      <td *ngIf="actions.length > 0">
+        <button
+          class="btn btn-info"
+          *ngIf="actions.includes('Edit')"
+          (click)="onEdit(item)"
+        >
+          <i class="mdi mdi-border-color"></i>
+          Edit
+        </button>
+        <button
+          class="btn btn-danger"
+          *ngIf="actions.includes('Delete')"
+          (click)="onDelete(item.id)"
+        >
+          <i class="mdi mdi-delete-forever"></i>
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

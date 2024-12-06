@@ -32,94 +32,38 @@
       (dataSearched)="onDataSearched($event)"
     />
     <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Mã xã</th>
-            <th>Tên xã</th>
-            <th>Mã huyện</th>
-            <th>Mã tỉnh</th>
-            <th>Cấp</th>
-            <th>Xã nghèo</th>
-            <th>Xã dân tộc</th>
-            <th>Xã miền núi</th>
-            <th>Là thành thị</th>
-            <th>Hoạt động</th>
-            <th>Thao tác</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of items">
-            <td class="py-1">{{ item.maXa }}</td>
-
-            <td>{{ item.tenXa }}</td>
-
-            <td>{{ item.maHuyen }}</td>
-            <td>{{ item.maTinh }}</td>
-            <td>{{ item.cap }}</td>
-
-            <td>
-              <i
-                [class]="
-                  item.isXaNgheo
-                    ? 'mdi mdi-check-circle-outline'
-                    : 'mdi mdi-close-circle-outline'
-                "
-                style="font-size: 24px"
-              ></i>
-            </td>
-            <td>
-              <i
-                [class]="
-                  item.isXaDanToc
-                    ? 'mdi mdi-check-circle-outline'
-                    : 'mdi mdi-close-circle-outline'
-                "
-                style="font-size: 24px"
-              ></i>
-            </td>
-            <td>
-              <i
-                [class]="
-                  item.isXaMienNui
-                    ? 'mdi mdi-check-circle-outline'
-                    : 'mdi mdi-close-circle-outline'
-                "
-                style="font-size: 24px"
-              ></i>
-            </td>
-            <td>
-              <i
-                [class]="
-                  item.isThanhThi
-                    ? 'mdi mdi-check-circle-outline'
-                    : 'mdi mdi-close-circle-outline'
-                "
-                style="font-size: 24px"
-              ></i>
-            </td>
-            <td>
-              <i
-                [class]="
-                  item.isActive
-                    ? 'mdi mdi-check-circle-outline'
-                    : 'mdi mdi-close-circle-outline'
-                "
-                style="font-size: 24px"
-              ></i>
-            </td>
-
-            <td>
-              <button class="btn btn-info" (click)="chooseItem(item)">
-                Edit
-              </button>
-              <button class="btn btn-danger" (click)="delete(item.id)">
-                Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <app-table
+        [columns]="[
+          'maXa',
+          'tenXa',
+          'maHuyen',
+          'maTinh',
+          'cap',
+          'isXaNgheo',
+          'isXaDanToc',
+          'isXaMienNui',
+          'isThanhThi',
+          'isActive'
+        ]"
+        [columnNames]="[
+          'Mã Xã',
+          'Tên Xã',
+          'Mã Huyện',
+          'Mã Tỉnh',
+          'Cấp',
+          'Xã Nghèo',
+          'Xã Dân Tộc',
+          'Xã Miền Núi',
+          'Là Thành Thị',
+          'Kích Hoạt'
+        ]"
+        [data]="items"
+        [actions]="['Edit', 'Delete']"
+        [isLoading]="isLoading"
+        (edit)="chooseItem($event)"
+        (delete)="delete($event)"
+        (pageChange)="onPageChange($event)"
+      />
     </div>
     <ngb-pagination
       [collectionSize]="totalItems"
