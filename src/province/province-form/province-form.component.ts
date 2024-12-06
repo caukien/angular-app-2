@@ -61,7 +61,6 @@ export class ProvinceFormComponent implements OnInit {
 
   addItem(): void {
     if (this.mode === 'add') {
-      debugger;
       this.provinceService.createOrUpdate(this.itemInit).subscribe({
         next: (response) => {
           this.itemtAdded.emit(true);
@@ -77,6 +76,7 @@ export class ProvinceFormComponent implements OnInit {
   }
 
   saveChange(itemForEdit: Province): void {
+    debugger;
     this.provinceService.createOrUpdate(itemForEdit).subscribe({
       next: (response) => {
         this.itemtAdded.emit(true);

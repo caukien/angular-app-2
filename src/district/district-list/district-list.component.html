@@ -17,7 +17,24 @@
     <button type="button" class="btn btn-success" (click)="openForm()">
       + Add New District
     </button>
-    <app-district-search (dataSearched)="onDataSearched($event)" />
+    <app-search-form
+      [fields]="[
+        {
+          name: 'filter',
+          type: 'text',
+          label: 'Nhập từ khoá tìm kiếm',
+          defaultValue: ''
+        },
+        {
+          name: 'isActive',
+          type: 'boolean',
+          label: 'Trạng thái',
+          defaultValue: null
+        }
+      ]"
+      [service]="districtService"
+      (dataSearched)="onDataSearched($event)"
+    />
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>

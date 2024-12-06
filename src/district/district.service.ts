@@ -59,6 +59,10 @@ export class DistrictService {
   }
 
   search(searchObj: any): Observable<any> {
+    const payload = {
+      ...searchObj,
+      isActive: searchObj.isActive === '' ? null : searchObj.isActive,
+    };
     return this.http.post<Root>(`${this.BaseEndpoint}/get-list`, searchObj);
   }
 }

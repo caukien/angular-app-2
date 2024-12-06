@@ -12,7 +12,7 @@ import { DistrictListComponent } from './district-list/district-list.component';
 import { DistrictFormComponent } from './district-form/district-form.component';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { customInterceptor } from '../app/custom.interceptor';
-import { DistrictSearchComponent } from './district-search/district-search.component';
+import { SearchFormModule } from '../shared_module/search-form/search-form.module';
 
 @NgModule({
   imports: [
@@ -22,12 +22,12 @@ import { DistrictSearchComponent } from './district-search/district-search.compo
     ReactiveFormsModule,
     NgbPaginationModule,
     ReactiveFormsModule,
+    SearchFormModule,
   ],
   declarations: [
     DistrictComponent,
     DistrictListComponent,
     DistrictFormComponent,
-    DistrictSearchComponent,
   ],
   exports: [DistrictComponent],
   providers: [

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Commune } from '../../model/commune';
 import { CommuneService } from '../commune.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CommuneSearchComponent } from '../commune-search/commune-search.component';
+import { SearchFormComponent } from '../../shared_module/search-form/search-form.component';
 
 @Component({
   selector: 'app-commune-list',
@@ -10,7 +10,7 @@ import { CommuneSearchComponent } from '../commune-search/commune-search.compone
   styleUrls: ['./commune-list.component.css'],
 })
 export class CommuneListComponent implements OnInit {
-  @ViewChild(CommuneSearchComponent) searchComponent!: CommuneSearchComponent;
+  @ViewChild(SearchFormComponent) searchComponent!: SearchFormComponent;
 
   items: Commune[] = [];
   isFormOpen = false;
@@ -26,7 +26,7 @@ export class CommuneListComponent implements OnInit {
   // }
 
   constructor(
-    private communeService: CommuneService,
+    protected communeService: CommuneService,
     private route: ActivatedRoute,
     private router: Router
   ) {}

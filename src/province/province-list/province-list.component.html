@@ -13,7 +13,21 @@
     <button type="button" class="btn btn-success" (click)="openForm()">
       + Add New Province
     </button>
-    <app-province-search (dataSearched)="onDataSearched($event)" />
+    <!-- <app-province-search (dataSearched)="onDataSearched($event)" /> -->
+    <app-search-form
+      [fields]="[
+        { name: 'filter', type: 'text', label: 'Tìm kiếm ', defaultValue: '' },
+        { name: 'maTinh', type: 'text', label: 'Mã Tỉnh', defaultValue: '' },
+        {
+          name: 'isActive',
+          type: 'boolean',
+          label: 'Hoạt động',
+          defaultValue: null
+        }
+      ]"
+      [service]="provinceservice"
+      (dataSearched)="onDataSearched($event)"
+    />
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>

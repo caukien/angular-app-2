@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DistrictService } from '../district.service';
 import { District } from '../../model/district';
-import { DistrictSearchComponent } from '../district-search/district-search.component';
+import { SearchFormComponent } from '../../shared_module/search-form/search-form.component';
 
 @Component({
   selector: 'app-district-list',
@@ -9,7 +9,7 @@ import { DistrictSearchComponent } from '../district-search/district-search.comp
   styleUrls: ['./district-list.component.css'],
 })
 export class DistrictListComponent implements OnInit {
-  @ViewChild(DistrictSearchComponent) searchComponent!: DistrictSearchComponent;
+  @ViewChild(SearchFormComponent) searchComponent!: SearchFormComponent;
   isFormOpen = false;
   itemToEdit: District | null = null;
   districts: District[] = [];
@@ -19,7 +19,7 @@ export class DistrictListComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 10;
 
-  constructor(private districtService: DistrictService) {}
+  constructor(public districtService: DistrictService) {}
 
   ngOnInit() {}
 
