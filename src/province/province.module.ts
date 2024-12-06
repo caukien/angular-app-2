@@ -9,6 +9,7 @@ import { ProvinceFormComponent } from './province-form/province-form.component';
 import { DistrictService } from '../district/district.service';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { SearchFormModule } from '../shared_module/search-form/search-form.module';
+import { TableModule } from '../shared_module/table/table.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { SearchFormModule } from '../shared_module/search-form/search-form.modul
     NgbPagination,
     ReactiveFormsModule,
     SearchFormModule,
+    TableModule,
   ],
   declarations: [
     ProvinceComponent,

@@ -10,6 +10,7 @@ import { DistrictService } from '../district/district.service';
 import { ProvinceService } from '../province/province.service';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchFormModule } from '../shared_module/search-form/search-form.module';
+import { TableModule } from '../shared_module/table/table.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { SearchFormModule } from '../shared_module/search-form/search-form.modul
     ReactiveFormsModule,
     NgbPaginationModule,
     SearchFormModule,
+    TableModule,
   ],
   declarations: [CommuneComponent, CommuneListComponent, CommuneFormComponent],
   exports: [CommuneComponent],

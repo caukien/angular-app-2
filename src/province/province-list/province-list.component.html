@@ -29,48 +29,16 @@
       (dataSearched)="onDataSearched($event)"
     />
     <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Mã Huyện</th>
-            <th>Tên Huyện</th>
-            <th>Cấp</th>
-            <th>Mã tỉnh</th>
-            <th>Kích hoạt</th>
-            <th>Thao tác</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let province of provinces">
-            <td class="py-1">{{ province.maHuyen }}</td>
-
-            <td>{{ province.tenHuyen }}</td>
-
-            <td>{{ province.cap }}</td>
-            <td>{{ province.maTinh }}</td>
-
-            <td>
-              <i
-                [class]="
-                  province.isActive
-                    ? 'mdi mdi-check-circle-outline'
-                    : 'mdi mdi-close-circle-outline'
-                "
-                style="font-size: 24px"
-              ></i>
-            </td>
-
-            <td>
-              <button class="btn btn-info" (click)="chooseItem(province)">
-                Edit
-              </button>
-              <button class="btn btn-danger" (click)="delete(province.id)">
-                Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <app-table
+        [columns]="['maHuyen', 'tenHuyen', 'cap', 'maTinh', 'isActive']"
+        [columnNames]="['Mã Huyện', 'Tên Huyện', 'Cấp', 'Mã Tỉnh', 'Kích Hoạt']"
+        [data]="provinces"
+        [actions]="['Edit', 'Delete']"
+        [isLoading]="isLoading"
+        (edit)="chooseItem($event)"
+        (delete)="delete($event)"
+        (pageChange)="onPageChange($event)"
+      />
     </div>
     <div class="d-flex justify-content-end mt-3">
       <ngb-pagination
